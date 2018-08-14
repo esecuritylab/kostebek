@@ -17,7 +17,7 @@ Tested on Kali Linux 2018.2, Ubuntu 16.04
 
 sudo apt-get -y install python3-pip
 
-pip3 -r requirements.txt  
+pip3 install -r requirements.txt  
 
 
 download latest version of Chromedriver and configure your driver-path
