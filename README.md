@@ -6,6 +6,12 @@
  |_|\_\  \___/  |___/  \__|  \___| |_.__/   \___| |_|\_	
  ```
 
+![issues](https://img.shields.io/github/issues/esecuritylab/kostebek.svg)
+![forks](https://img.shields.io/github/forks/esecuritylab/kostebek.svg)
+![stars](https://img.shields.io/github/stars/esecuritylab/kostebek.svg)
+![license](https://img.shields.io/github/license/esecuritylab/kostebek.svg)
+[![Rawsec's CyberSecurity Inventory](https://inventory.rawsec.ml/img/badges/Rawsec-inventoried-FF5050_flat.svg)](http://inventory.rawsec.ml/tools.html#Kostebek)
+
 The Kostebek is a reconnaissance tool which uses firms' trademark information to discover their domains.
 
 
