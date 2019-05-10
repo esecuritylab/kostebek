@@ -152,7 +152,7 @@ class kostebek:
 
 
 	def getRootDomains(self):
-		text = requests.get('http://www.iana.org/domains/root/db').text
+		text = requests.get('http://www.iana.org/domains/root/db', timeout=10).text
 		soup = BeautifulSoup(text, "html.parser")
 		link = soup.find('table', {'id': 'tld-table'})
 		tlds = [anchor.text for anchor in link.find_all('a')]
