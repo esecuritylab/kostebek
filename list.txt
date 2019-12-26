@@ -1,2 +1,2 @@
-http://example.com
-https://example.com
+http://www.company.com
+https://www.company.com
