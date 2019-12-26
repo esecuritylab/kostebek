@@ -13,7 +13,7 @@ The Kostebek is a reconnaissance tool which uses firms' trademark information to
 **Installation**
 
 ```
-Tested on Kali Linux 2018.2, Ubuntu 16.04 
+Tested on Kali Linux 2019.3 
 
 sudo apt-get -y install python3-pip
 
@@ -37,8 +37,14 @@ https://www.google.com/chrome/browser/desktop/
  Trademark Scan :  python3 kostebek.py -u list.txt -n Organization Name
  
  Get Google Domains  : python3 kostebek.py -g Organization Name 
+
+ Get Bing Domains  : python3 kostebek.py -b Organization Name 
+
+ Get Yahoo Domains  : python3 kostebek.py -y Organization Name 
  
  Get Company Trademarks : python3 kostebek.py -t Organization Name
+
+
 
  ***Demo***
 
