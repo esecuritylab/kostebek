@@ -1,7 +1,7 @@
 beautifulsoup4==4.6.1
 gevent==1.4.0
 greenlet==0.4.15
-requests==2.18.4
+requests==2.20.0
 selenium==3.14.0
 tldextract==2.2.0
 urllib3==1.22
