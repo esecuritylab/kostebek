@@ -18,9 +18,9 @@ The Kostebek is a reconnaissance tool which uses firms' trademark information to
 
 #### Requirements
 
-sudo apt-get -y install python3-pip
+```sudo apt-get -y install python3-pip```
 
-pip3 -r requirements.txt 
+```pip3 -r requirements.txt```
 
 Download latest version of Chromedriver and configure your driver-path
 
