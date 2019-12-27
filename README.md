@@ -1,10 +1,9 @@
-<h1 align="center">
-  <br>
-  <a href="https://github.com/esecuritylab/kostebek"><img src="https://i.ibb.co/YXHMbkM/logo.jpg"  width=350 height=350 alt="Kostebek"></a>
-  <br>
-  Kostebek
-</h1>
-<h4 align="center">Kostebek Reconnaissance Tool</h4>
+
+<h2 align="center">
+<img src="https://i.ibb.co/YXHMbkM/logo.jpg"  width=250 height=250 alt="Kostebek">
+<br>Kostebek Reconnaissance Tool
+</h2>
+<br>  
 
 ### Introduction
 
