@@ -23,14 +23,19 @@ sudo apt-get -y install python3-pip
 pip3 -r requirements.txt 
 
 Download latest version of Chromedriver and configure your driver-path
+
 ```sudo apt-get install unzip```
+
 ```sudo unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/```
 
 
 Download latest version of Chrome
 https://www.google.com/chrome/browser/desktop/
+
 ```dpkg -i google-chrome-stable_current_amd64.deb```
+
 ```apt-get install -f```
+
 ```dpkg -i google-chrome-stable_current_amd64.deb```
 
 
