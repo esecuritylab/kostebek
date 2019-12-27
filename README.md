@@ -1,15 +1,12 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/esecuritylab/kostebek"><img src="https://i.ibb.co/YXHMbkM/logo.jpg" alt="Kostebek"></a>
-  <br>
+  <a href="https://github.com/esecuritylab/kostebek"><img src="https://i.ibb.co/YXHMbkM/logo.jpg"  width=350 height=350 alt="Kostebek"></a>
   Kostebek
-  <br>
 </h1>
-
 <h4 align="center">Kostebek Reconnaissance Tool</h4>
 
-
 ### Introduction
+
 The Kostebek is a reconnaissance tool which uses firms' trademark information to discover their domains.
 
 [![Kostebek](https://img.youtube.com/vi/OR4YzrgNNcE/0.jpg)](https://www.youtube.com/watch?v=OR4YzrgNNcE)
@@ -26,15 +23,15 @@ sudo apt-get -y install python3-pip
 pip3 -r requirements.txt 
 
 Download latest version of Chromedriver and configure your driver-path
-#sudo apt-get install unzip
-#sudo unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
+```sudo apt-get install unzip```
+```sudo unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/```
 
 
 Download latest version of Chrome
 https://www.google.com/chrome/browser/desktop/
-#dpkg -i google-chrome-stable_current_amd64.deb
-#apt-get install -f
-#dpkg -i google-chrome-stable_current_amd64.deb
+```dpkg -i google-chrome-stable_current_amd64.deb```
+```apt-get install -f```
+```dpkg -i google-chrome-stable_current_amd64.deb```
 
 
 ### Example Usage
