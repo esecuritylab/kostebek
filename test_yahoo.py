@@ -57,10 +57,13 @@ def getYahoo(dork):
 			map.click()
 			time.sleep(2)
 			i += 1
-
 	except NoSuchElementException as e:
 		print("No Such Element")
-		
 		driver.quit()	
+		sys.exit(0)
+
+	driver.quit()
+	sys.exit(0)
 
 getYahoo("© Company 2019")	
+sys.exit(0)

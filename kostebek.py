@@ -54,8 +54,6 @@ __version__ = "1.1.0"
 def banner():
 	print("""%s
  Köstebek Reconnaissance tool 
- Author: Evren (@evrnyalcin)
- Contributors: Burak (@A_Burak_Gokalp)
  https://www.github.com/esecuritylab/kostebek
  Version: %s
 """ % (red, __version__ ))
@@ -66,11 +64,14 @@ banner()
 
 class kostebek:
 
-	def __init__(self,filename,organization):
+	def __init__(self,filename,organization,yearmode):
 		self.filename = filename
 		self.org = organization
 		self.bank = {}
 		self.log = []
+		self.year = list(range(1990,2021))
+		self.yearmode = yearmode
+
 
 	def readFile(self):
 		try:
@@ -109,7 +110,7 @@ class kostebek:
 					getTrademarks = soup.find(text=pattern)
 					if getTrademarks is not None:
 						if copyrightAll in getTrademarks:
-							if(len(getTrademarks) < 40): 
+							if(len(getTrademarks) < 40):
 								noUnicode = getTrademarks.encode('ascii', 'ignore')			
 								print('%s URL: %s String: %s Match: %s ' % (good, u, copyrightAll, noUnicode))
 								merge = self.org+u
@@ -165,7 +166,7 @@ class kostebek:
 		
 		jobs = []
 		links = []
-		p = pool.Pool(20)
+		p = pool.Pool(50)
 
 		for allRootDomains in tlds:
 			https = "https://www."+self.org+allRootDomains
@@ -204,14 +205,28 @@ class kostebek:
 			print(noUnicode)	
 			text = input(" yes/no(press enter)  ")
 			if text == "yes":
-				trademarkList2.append(tl)
-				trademarkList_bing.append(tl)
-				trademarkList_yahoo.append(tl)
-				directory = "results/"+self.org+"/"
-				line = tl.rstrip('\n') 
-				if(len(line) < 40): 
-					self.write(directory,"unique_trademarks.txt",tl)
+				if(self.yearmode=="yes"):
+					for year1 in self.year:
+						match = re.findall(r'.*([1-3][0-9]{3})', tl)									
+						tl = tl.replace(str(match[0]),str(year1))	
 
+
+						trademarkList2.append(tl)
+						trademarkList_bing.append(tl)
+						trademarkList_yahoo.append(tl)
+						directory = "results/"+self.org+"/"
+						line = tl.rstrip('\n') 
+						if(len(line) < 40):
+							self.write(directory,"unique_trademarks.txt",tl)
+				else:
+					
+						trademarkList2.append(tl)
+						trademarkList_bing.append(tl)
+						trademarkList_yahoo.append(tl)
+						directory = "results/"+self.org+"/"
+						line = tl.rstrip('\n') 
+						if(len(line) < 40): 
+							self.write(directory,"unique_trademarks.txt",tl)								
 			else:
 				continue	
 
@@ -247,9 +262,11 @@ class kostebek:
 		chrome_options.add_argument("--disable-dev-shm-usage") 
 		chrome_options.add_argument("disable-infobars")
 		chrome_options.add_argument("--no-sandbox") 
-		chrome_driver = "/usr/local/bin/chromedriver"
+		chrome_options.add_argument("--incognito")
+		chrome_driver = "venv/chromedriver-Linux64"
 
 		driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=chrome_driver)
+		driver.delete_all_cookies() #Delete all cookies
 		driver.get('http://www.google.com')
 		driver.implicitly_wait(20)
 		search = driver.find_element_by_name('q')
@@ -303,7 +320,7 @@ class kostebek:
 		chrome_options.add_argument("--disable-dev-shm-usage") 
 		chrome_options.add_argument("disable-infobars")
 		chrome_options.add_argument("--no-sandbox") 
-		chrome_driver = "/usr/local/bin/chromedriver"		
+		chrome_driver = "venv/chromedriver-Linux64"		
 
 		driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=chrome_driver)
 		driver.get('https://www.bing.com')
@@ -367,7 +384,7 @@ class kostebek:
 		chrome_options.add_argument("--disable-dev-shm-usage") 
 		chrome_options.add_argument("disable-infobars")
 		chrome_options.add_argument("--no-sandbox") 
-		chrome_driver = "/usr/local/bin/chromedriver"		
+		chrome_driver = "venv/chromedriver-Linux64"		
 
 		driver = webdriver.Chrome(chrome_options=chrome_options, executable_path=chrome_driver)
 		driver.get('https://www.yahoo.com')
@@ -496,12 +513,13 @@ parser.add_argument('-n', help='Organization Name')
 parser.add_argument('-g', help='Google Domains') 
 parser.add_argument('-b', help='Bing Domains') 
 parser.add_argument('-y', help='Yahoo Domains')
-parser.add_argument('-t', help='Company Trademarks') 
+parser.add_argument('-t', help='Company Trademarks')
+parser.add_argument('-yearmode', help='Year Mode (1990-2020)') 
 args = parser.parse_args()
 
 if len(sys.argv) == 1:
 	parser.print_help()
-	print("\n Example Usage :\n\n Trademark Scan :  python3 kostebek.py -u list.txt -n Organization Name \n Get Google Domains  : python3 kostebek.py -g Organization Name \n Get Bing Domains  : python3 kostebek.py -b Organization Name \n Get Yahoo Domains  : python3 kostebek.py -y Organization Name  \n Get Company Trademarks : python3 kostebek.py -t Organization Name\n ")
+	print("\n Example Usage :\n\n Trademark Scan :  python3 kostebek.py -u list.txt -n Organization Name \n Get Google Domains  : python3 kostebek.py -g Organization Name \n Get Bing Domains  : python3 kostebek.py -b Organization Name \n Get Yahoo Domains  : python3 kostebek.py -y Organization Name  \n Get Company Trademarks : python3 kostebek.py -t Organization Name\n Trademark Scan (Year mode) :  python3 kostebek.py -u list.txt -n Organization Name -yearmode yes ")
 	sys.exit()
 
 if args.g is not None:
@@ -522,15 +540,14 @@ if args.y is not None:
 if args.t is not None:
 	core = ParseDomain(args.t)
 	core.getTrademarks()
-	sys.exit()	
+	sys.exit()
 
-core = kostebek(args.u,args.n)
+
+core = kostebek(args.u,args.n,args.yearmode)
 
 try:	
 	core.getSource()
+	sys.exit(0)	
 except KeyboardInterrupt:
 	print('Interrupted')
-	sys.exit(0)		
-
-
-
+	sys.exit(0)
