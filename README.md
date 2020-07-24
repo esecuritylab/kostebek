@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/esecuritylab/kostebek"><img src="https://github.com/xsuperbug/kostebekpriv/blob/master/kostebek.png?raw=true" alt="Kostebek"></a>
+  <a href="https://github.com/esecuritylab/kostebek"><img src="https://raw.githubusercontent.com/esecuritylab/kostebek/master/kostebek.png" alt="Kostebek"></a>
 </h1>
 <h4 align="center">Reconnaissance Tool</h4>
 
