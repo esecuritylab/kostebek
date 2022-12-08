@@ -1,6 +1,6 @@
 argh==0.26.2
 beautifulsoup4==4.9.0
-certifi==2020.6.20
+certifi==2022.12.7
 cffi==1.14.0
 chardet==3.0.4
 chromedriver==2.24.1
